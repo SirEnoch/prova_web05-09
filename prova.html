@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Números</title>
+</head>
+<body>
+    <h1>Adicionar Números em Ordem Decrescente</h1>
+    
+    <input type="number" id="numeroInput" placeholder="Digite um número">
+    <button onclick="adicionarNumero()">Adicionar</button>
+    
+    <h2>Números Adicionados:</h2>
+    <ul id="listaNumeros"></ul>
+    
+    <script>
+        // Array para armazenar os números
+        var numeros = [];
+
+        function adicionarNumero() {
+            var numero = parseInt(document.getElementById("numeroInput").value);
+
+            // Verificar se o valor é um número válido
+            if (!isNaN(numero)) {
+                numeros.push(numero); // Adicionar o número ao array
+                atualizarLista(); // Atualizar a lista de números
+                document.getElementById("numeroInput").value = ""; // Limpar o campo de entrada
+            }
+        }
+
+        function atualizarLista() {
+            var listaNumeros = document.getElementById("listaNumeros");
+            listaNumeros.innerHTML = ""; // Limpar a lista atual
+
+            // Ordenar os números em ordem decrescente
+            numeros.sort(function(a, b) {
+                return b - a;
+            });
+
+            // Adicionar os números ordenados à lista
+            for (var i = 0; i < numeros.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = numeros[i];
+                listaNumeros.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>
+
