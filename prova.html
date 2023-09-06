@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>kek</title>
+</head>
+<body>
+    <h1>Prova Pratica de Web</h1>
+    
+    <input type="number" id="numeroInput" placeholder="Digite um número">
+    <button onclick="adicionarNumero()">Adicionar</button>
+    
+    <ul id="listaNumeros"></ul>
+    
+    <script>
+        
+        var numeros = [];
+
+        function adicionarNumero() {
+            var numero = parseInt(document.getElementById("numeroInput").value);
+
+            
+            if (!isNaN(numero)) {
+                numeros.push(numero); 
+                atualizarLista(); 
+                document.getElementById("numeroInput").value = ""; 
+            }
+        }
+
+        function atualizarLista() {
+            var listaNumeros = document.getElementById("listaNumeros");
+            listaNumeros.innerHTML = ""; 
+
+            
+            numeros.sort(function(a, b) {
+                return b - a;
+            });
+
+            
+            for (var i = 0; i < numeros.length; i++) {
+                var li = document.createElement("li");
+                li.textContent = numeros[i];
+                listaNumeros.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>
+
